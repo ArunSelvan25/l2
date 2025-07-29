@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@custom-variant hover (&:hover);
+
+@theme {
+  --color-primary: oklch(0.5603 0.1677 142.41);
+  /* --color-primary: oklch(0.7 0.2615 326.65); */
+  /* --color-radiant: oklch(0.8015 0.2171 146.65); */
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out forwards;
+}

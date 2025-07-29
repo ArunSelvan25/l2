@@ -1,0 +1,28 @@
+<section class="py-24 px-6  mx-4 md:mx-12 mt-16">
+  <div class="max-w-7xl mx-auto text-center">
+    <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
+      Why Choose Us
+    </h2>
+    <p class="text-gray-600 text-lg sm:text-xl mb-16 max-w-2xl mx-auto">
+      We make your shopping experience seamless, secure, and satisfying.
+    </p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      @for (feature of features; track $index) {
+        <div
+          class="bg-white/90 backdrop-blur-lg ring-1 ring-gray-200 hover:ring-primary/40 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 text-center p-6 group"
+        >
+          <div class="w-14 h-14 flex items-center justify-center mx-auto mb-5 rounded-full bg-primary/10 text-primary text-2xl group-hover:bg-primary/20 transition">
+            {{ feature.icon }}
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2 group-hover:text-primary transition-colors">
+            {{ feature.title }}
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            {{ feature.description }}
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
