@@ -205,18 +205,35 @@ setupInfiniteScroll() {
 
 Screenshots of each major view are available in the `public/screenshots` folder:
 
-* `landing.png`
-* `product-listing.png`
-* `product-details.png`
-* `checkout.png`
-* `order-success.png`
-* `order-failed.png`
-* `orders.png`
-* `order-view.png`
+You can refer below:
 
-You can reference them as:
+### Landing page
 
 ![Landing Page](public/screenshots/landing.png)
+
+### Product List
+
+![Product List](public/screenshots/product-listing.png)
+
+### Checkout
+
+![Checkout](public/screenshots/checkout.png)
+
+### Order Overview
+
+![Order Overview](public/screenshots/order-view.png)
+
+### Orders List
+
+![Orders List](public/screenshots/orders-list.png)
+
+### Orders Place Success
+
+![Orders Place Success](public/screenshots/orders-success.png)
+
+### Orders Place Fail
+
+![Orders Place Fail](public/screenshots/orders-failed.png)
 
 ---
 
