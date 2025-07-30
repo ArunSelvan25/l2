@@ -301,7 +301,7 @@ The app will automatically reload if you change any of the source files.
 
 ## 🧑‍💻 Author
 
-Developed with ❤️ by \[Arunbalaji]
+Developed with ❤️ by Arunbalaji
 Powered by Angular + Tailwind CSS
 
 ---
