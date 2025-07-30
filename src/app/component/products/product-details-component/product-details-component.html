@@ -1,43 +1,79 @@
-<div>
-  <button class="rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10">Open dialog</button>
 
-  <div role="dialog" aria-modal="true" aria-labelledby="dialog-title" class="relative z-99">
-
+@if (isBrowser) {
+  <div>
+  <div role="dialog" aria-modal="true" aria-labelledby="dialog-title" class="relative z-50">
     <div aria-hidden="true" class="fixed inset-0 bg-gray-500/75 transition-opacity"></div>
 
-    <div class="fixed inset-0 z-99 w-screen overflow-y-auto">
+    <div class="fixed inset-0 z-50 w-screen overflow-y-auto">
       <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-
         <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-            <div id="product-carousel" class="relative w-full" data-carousel="slide">
-                <div class="relative h-[300px] overflow-hidden rounded-lg">
-                    @for (img of product?.images; track $index) {
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img [src]="img" class="absolute block w-full h-full object-cover" />
-                    </div>
-                    }
-                </div>
+          
+          <button
+            type="button"
+            class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 transition z-99 cursor-pointer"
+            (click)="closeModal()"
+            aria-label="Close"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
 
-                <!-- Prev Button -->
-                <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/80 group-hover:bg-white">
-                    <svg class="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                    </span>
-                </button>
-
-                <!-- Next Button -->
-                <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/80 group-hover:bg-white">
-                    <svg class="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                    </span>
-                </button>
+          <!-- Product Image Carousel -->
+          <div id="product-carousel" class="relative w-full" data-carousel="slide">
+            <div class="relative h-[300px] overflow-hidden rounded-t-lg">
+              @for (img of product.images; track $index) {
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img [src]="img" class="absolute block w-full h-full object-cover" />
+              </div>
+              }
             </div>
+
+            <!-- Prev Button -->
+            <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/80 group-hover:bg-white">
+                <svg class="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </span>
+            </button>
+
+            <!-- Next Button -->
+            <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/80 group-hover:bg-white">
+                <svg class="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </button>
+          </div>
+
+          <!-- Product Info -->
+          <div class="px-6 py-5 space-y-4">
+            <h2 id="dialog-title" class="text-xl font-bold text-gray-900">{{ product.name }}</h2>
+            <p class="text-sm text-gray-600">{{ product.description }}</p>
+
+            <div class="flex items-center justify-between text-sm text-gray-700">
+              <div>
+                <span class="font-medium">Category:</span> {{ product.category }}
+              </div>
+              <div>
+                <span class="font-medium">Ratings:</span> {{ product.ratingCount }} reviews
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-lg font-semibold text-gray-900">
+              <div>₹{{ product.price }}</div>
+              <div [ngClass]="{ 'text-green-600': product.stock > 0, 'text-red-600': product.stock === 0 }">
+                {{ product.stock > 0 ? product.stock + ' in stock' : 'Out of Stock' }}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
+}

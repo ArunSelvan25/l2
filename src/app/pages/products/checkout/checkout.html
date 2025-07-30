@@ -1,0 +1,45 @@
+<app-navbar-component></app-navbar-component>
+
+<main class="flex-1 max-w-8xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+  <!-- Grid Layout for Checkout -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-1 items-start">
+
+    <!-- Left Section: Customer + Shipping Info -->
+    <div class="lg:col-span-2 space-y-6">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
+        <!-- Customer Info -->
+        <div class="p-6">
+          <app-customer-information-component></app-customer-information-component>
+        </div>
+
+        <!-- Shipping Info -->
+        <div class="p-6">
+          <app-shipping-info-component></app-shipping-info-component>
+        </div>
+      </div>
+
+      <!-- Payment Info -->
+      <div class="p-6">
+        <app-payment-info-component></app-payment-info-component>
+      </div>
+
+      <!-- Promo Code -->
+      <!-- <div class="bg-white shadow-sm rounded-2xl border border-gray-200 p-6">
+        <app-promo-code-component></app-promo-code-component>
+      </div> -->
+    </div>
+
+    <!-- Right Section: Order Summary -->
+    <div class="sticky top-24 w-full">
+      <div class="p-6">
+        <app-order-summary-component></app-order-summary-component>
+      </div>
+    </div>
+    
+  </div>
+
+</main>
+
+<app-footer-component></app-footer-component>

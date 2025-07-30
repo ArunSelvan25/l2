@@ -12,11 +12,12 @@ import { ProductDetailsComponent } from '../product-details-component/product-de
 })
 
 export class ProductListingComponent implements AfterViewInit, OnInit {
-  allProducts = Array.from({ length: 100 }, (_, i) => i); // total available
+  allProducts = Array.from({ length: 10 }, (_, i) => i); // total available
   products: number[] = []; // only visible ones
   batchSize = 10;
   currentIndex = 0;
   openProductDetails = false;
+  selectedProductId: any;
 
   private observer!: IntersectionObserver;
 
@@ -60,7 +61,12 @@ export class ProductListingComponent implements AfterViewInit, OnInit {
     this.currentIndex += this.batchSize;
   }
 
-  productDetailsToggle() {
+  productDetailsToggle(i: any) {
+    if (typeof i != 'number') {
+      this.selectedProductId = null;
+    } else {
+      this.selectedProductId = this.products[i] + 1;
+    }
     this.openProductDetails = !this.openProductDetails;
   }
 }

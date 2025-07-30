@@ -1,0 +1,25 @@
+<div class="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-6">
+  <div class="rounded-full bg-primary/20 p-6">
+    <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+  </div>
+
+  <div>
+    <h1 class="text-2xl font-semibold text-gray-800">Order Placed Successfully!</h1>
+    <p class="text-gray-600 mt-2">Thank you for your purchase. A confirmation email has been sent to your inbox.</p>
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-4">
+    <button
+     (click)="gotoHome()"
+     class="inline-flex items-center justify-center px-6 py-2 text-sm font-medium bg-primary text-white rounded-xl hover:bg-primary/80 transition">
+      Continue Shopping
+    </button>
+    <button
+     (click)="gotoHome()"
+     class="inline-flex items-center justify-center px-6 py-2 text-sm font-medium border border-primary text-primary rounded-xl hover:bg-primary/80 hover:text-white transition">
+      View My Orders
+    </button>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<section class="max-w-4xl mx-auto bg-white/90 backdrop-blur-lg ring-1 ring-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6 sm:p-8 space-y-8">
+
+  <!-- Title -->
+  <div class="text-center">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2 tracking-tight">Customer Information</h2>
+    <p class="text-gray-600 text-base sm:text-lg">Please provide your contact details to proceed with your order.</p>
+  </div>
+
+  <!-- Customer Form -->
+  <form [formGroup]="customerForm" class="space-y-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- Full Name -->
+      <div class="sm:col-span-2">
+        <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">
+          Full Name <span class="text-red-500">*</span>
+        </label>
+        <input
+          id="fullName"
+          type="text"
+          formControlName="fullName"
+          placeholder="John Doe"
+          class="w-full rounded-lg border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 shadow-sm"
+        />
+      </div>
+
+      <!-- Email Address -->
+      <div class="sm:col-span-2">
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+          Email Address <span class="text-gray-400 text-xs font-normal">(optional)</span>
+        </label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          class="w-full rounded-lg border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 shadow-sm"
+        />
+        <p class="mt-1 text-xs text-gray-400">
+          We'll send delivery updates here.
+        </p>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="sm:col-span-2">
+        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+          Phone Number <span class="text-red-500">*</span>
+        </label>
+        <input
+          id="phone"
+          type="tel"
+          formControlName="phone"
+          placeholder="+91 9876543210"
+          class="w-full rounded-lg border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 shadow-sm"
+        />
+      </div>
+    </div>
+
+    <!-- Validation or Error Display -->
+     @if (customerForm.invalid && customerForm.touched) {
+        <div class="text-red-500 text-sm mt-2">
+          Please fill in the required fields correctly.
+        </div>
+     }
+  </form>
+</section>

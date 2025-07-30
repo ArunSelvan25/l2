@@ -1,0 +1,95 @@
+<section class="max-w-4xl mx-auto bg-white/90 backdrop-blur-md ring-1 ring-gray-200 rounded-3xl shadow-xl transition-all duration-300 p-6 sm:p-10 space-y-10">
+
+  <!-- Title -->
+  <div class="text-center">
+    <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Order Summary</h2>
+    <p class="text-gray-500 text-lg mt-2">Review and confirm your items before checkout.</p>
+  </div>
+
+  <!-- @if: No products -->
+  @if (selectedProducts.length === 0) {
+    <div class="flex justify-center items-center py-10 text-gray-400 text-base">
+      <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 3h18v18H3V3z" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 10l-4 4-4-4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      No products in your cart.
+    </div>
+  }
+
+  <!-- @if: Products exist -->
+  @if (selectedProducts.length > 0) {
+
+    <!-- Product List -->
+    <div class="space-y-6">
+      @for (item of selectedProducts; track $index; let i = $index) {
+        <div class="border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+
+          <!-- Header -->
+          <button
+            type="button"
+            class="w-full flex justify-between items-start gap-4 px-5 py-4 bg-white group hover:bg-gray-50 transition"
+            (click)="toggleItem(i)"
+          >
+            <div class="flex gap-5 items-start">
+              <img [src]="item.image" alt="Product Image" class="w-20 h-20 rounded-xl object-cover border border-gray-300" />
+
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800 group-hover:text-primary transition">{{ item.name }}</h3>
+                <p class="text-sm text-gray-500 mt-1">{{ item.variant || 'Standard' }} • Qty: {{ item.quantity }}</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-end">
+              <span class="text-base font-semibold text-gray-900">₹{{ item.price * item.quantity }}</span>
+              <svg
+                [ngClass]="{ 'rotate-180': expandedIndex === i }"
+                class="w-5 h-5 text-gray-400 transition-transform duration-300 mt-3"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </button>
+
+          <!-- Expanded Content -->
+          @if (expandedIndex === i) {
+            <div class="bg-gray-50 px-6 py-4 text-sm text-gray-700 border-t space-y-2 animate-fade-in-down">
+              <p><span class="font-medium text-gray-600">Description:</span> {{ item.description || 'No description available.' }}</p>
+              <p><span class="font-medium text-gray-600">SKU:</span> {{ item.sku || 'N/A' }}</p>
+              <p><span class="font-medium text-gray-600">Delivery:</span> Estimated in 3–5 days</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Summary Footer -->
+    <div class="text-sm sm:text-base text-gray-700 border-t border-gray-200 pt-6 space-y-4">
+      <div class="flex justify-between">
+        <span>Subtotal</span>
+        <span class="font-medium text-gray-900">₹{{ subtotal }}</span>
+      </div>
+
+      <div class="flex justify-between">
+        <span>Tax</span>
+        <span class="font-medium text-gray-900">₹{{ tax }}</span>
+      </div>
+
+      <div class="flex justify-between">
+        <span>Shipping</span>
+        @if (shippingFee === 0) {
+          <span class="font-medium text-green-600">Free</span>
+        } @else {
+          <span class="font-medium text-gray-900">₹{{ shippingFee }}</span>
+        }
+      </div>
+
+      <div class="flex justify-between text-lg font-bold text-gray-900 border-t pt-4 mt-2">
+        <span>Total</span>
+        <span>₹{{ total }}</span>
+      </div>
+    </div>
+  }
+</section>

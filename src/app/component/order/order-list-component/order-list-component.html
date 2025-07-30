@@ -1,0 +1,68 @@
+<div class="p-6 sm:p-10 rounded-2xl shadow-lg min-h-screen">
+  <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-10 tracking-tight">My Orders</h2>
+
+  <div class="space-y-6">
+    @for (order of orders; track $index) {
+      <div
+        class="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-200"
+      >
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <!-- Order Info -->
+          <div class="flex-1 space-y-1">
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-900">Order #{{ order.id }}</h3>
+            <p class="text-sm text-gray-500">Placed on {{ order.date | date: 'mediumDate' }}</p>
+            <p>
+                <span class="text-gray-500">Total:</span>
+                <span class="text-lg font-semibold text-gray-900">₹{{ order.total }}</span>
+            </p>
+            <p>
+                <span class="text-gray-500">Status:</span>
+                <span
+                  class="inline-flex items-center px-3 py-1 mx-1 rounded-full text-xs font-semibold capitalize"
+                  [ngClass]="{
+                    'bg-green-100 text-green-700': order.status === 'completed',
+                    'bg-yellow-100 text-yellow-700': order.status === 'pending',
+                    'bg-red-100 text-red-700': order.status === 'failed'
+                  }"
+                >
+                  {{ order.status }}
+                </span>
+              </p>
+          </div>
+
+          <!-- Price & Status -->
+          <div class="flex-1 sm:flex sm:items-center sm:justify-between gap-6">
+            <div class="text-sm text-gray-600">
+              <p>
+                
+              </p>
+            </div>
+
+            <div class="text-sm text-gray-600">
+              
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex flex-col sm:flex-row gap-3 sm:justify-end sm:items-center">
+            <button
+              class="px-5 py-2 text-sm font-medium text-primary border border-primary rounded-xl hover:bg-primary hover:text-white transition"
+              (click)="viewOrder(order.id)"
+            >
+              View Details
+            </button>
+
+            @if (order.status === 'pending') {
+              <button
+                class="px-5 py-2 text-sm font-medium text-white bg-primary rounded-xl hover:bg-primary/90 transition"
+                (click)="retryPayment(order.id)"
+              >
+                Retry Payment
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

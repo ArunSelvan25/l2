@@ -1,7 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, PLATFORM_ID, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
+import { isPlatformBrowser } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,11 @@ import { initFlowbite } from 'flowbite';
 })
 export class App implements OnInit {
   protected readonly title = signal('shopmate');
+
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
   ngOnInit(): void {
-    initFlowbite();
+    if (isPlatformBrowser(this.platformId)) {
+      initFlowbite();
+    }
   }
 }

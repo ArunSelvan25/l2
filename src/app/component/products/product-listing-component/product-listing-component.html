@@ -39,8 +39,8 @@
             <!-- Info -->
             <div class="p-4 space-y-1">
               <button
-                class="text-base font-semibold text-left text-gray-800 group-hover:text-primary/90 transition duration-200"
-                (click)="productDetailsToggle()"
+                class="text-base font-semibold text-left text-gray-800 group-hover:text-primary/90 hover:underline cursor-pointer transition duration-200"
+                (click)="productDetailsToggle(i)"
               >
                 Product Name {{ i + 1 }}
               </button>
@@ -89,7 +89,7 @@
 </section>
 
 @if (openProductDetails) {
-  <app-product-details-component></app-product-details-component>
+  <app-product-details-component [_productId]="selectedProductId" (eventToggle)="productDetailsToggle('undefined')"></app-product-details-component>
 }
 
 
