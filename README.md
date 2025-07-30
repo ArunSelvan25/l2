@@ -216,9 +216,7 @@ Screenshots of each major view are available in the `public/screenshots` folder:
 
 You can reference them as:
 
-```
 ![Landing Page](public/screenshots/landing.png)
-```
 
 ---
 
