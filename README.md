@@ -229,11 +229,11 @@ You can refer below:
 
 ### Orders Place Success
 
-![Orders Place Success](public/screenshots/orders-success.png)
+![Orders Place Success](public/screenshots/order-success.png)
 
 ### Orders Place Fail
 
-![Orders Place Fail](public/screenshots/orders-failed.png)
+![Orders Place Fail](public/screenshots/order-failed.png)
 
 ---
 
