@@ -302,12 +302,5 @@ The app will automatically reload if you change any of the source files.
 ## 🧑‍💻 Author
 
 Developed with ❤️ by Arunbalaji
-Powered by Angular + Tailwind CSS
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 
